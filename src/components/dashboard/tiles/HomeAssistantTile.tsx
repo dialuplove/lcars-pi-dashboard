@@ -17,10 +17,18 @@ export const HomeAssistantTile = () => {
 
       <div className="flex-1 relative">
         {!isLoaded && (
-          <div className="absolute inset-0 flex items-center justify-center bg-accent/50">
-            <div className="text-center">
-              <div className="animate-spin w-8 h-8 border-2 border-accent-foreground border-t-transparent rounded-full mx-auto mb-4" />
-              <div className="text-accent-foreground">Loading Home Assistant...</div>
+          <div className="absolute inset-0 flex items-center justify-center bg-accent/80 backdrop-blur-sm">
+            <div className="text-center space-y-4">
+              <div className="relative">
+                <div className="w-16 h-16 border-4 border-accent-foreground/30 border-t-accent-foreground rounded-full animate-spin mx-auto" />
+                <div className="absolute inset-2 border-2 border-accent-foreground/20 border-r-accent-foreground/60 rounded-full animate-spin" style={{ animationDirection: 'reverse', animationDuration: '1.5s' }} />
+              </div>
+              <div className="space-y-2">
+                <div className="text-accent-foreground lcars-text">LOADING HOME ASSISTANT</div>
+                <div className="text-xs text-accent-foreground/70 lcars-number">
+                  ESTABLISHING SECURE CONNECTION...
+                </div>
+              </div>
             </div>
           </div>
         )}

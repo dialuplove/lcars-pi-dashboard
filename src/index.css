@@ -277,8 +277,12 @@ All colors are HSL format for consistency */
   }
   
   /* Touch Feedback */
-  .lcars-touch:active {
-    @apply scale-95 brightness-110;
+  .lcars-touch {
+    @apply transition-all duration-200 hover:brightness-110 hover:scale-105 active:scale-95;
+  }
+  
+  .lcars-touch:hover {
+    @apply shadow-[var(--glow-primary)];
   }
 }
 

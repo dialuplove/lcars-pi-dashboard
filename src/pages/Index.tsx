@@ -2,12 +2,15 @@ import { useEffect, useState } from 'react';
 import { StatusStrip } from '@/components/dashboard/StatusStrip';
 import { MainTileGrid } from '@/components/dashboard/MainTileGrid';
 import { ActionBar } from '@/components/dashboard/ActionBar';
+import { LCARSLoader } from '@/components/lcars/LCARSLoader';
+import { DevelopmentToggle } from '@/components/dashboard/DevelopmentToggle';
 import { fetchSystemStatus, fetchKioskConfig, SystemStatus, KioskConfig } from '@/lib/api';
 
 const Index = () => {
   const [systemStatus, setSystemStatus] = useState<SystemStatus | null>(null);
   const [kioskConfig, setKioskConfig] = useState<KioskConfig | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isDevelopmentMode, setIsDevelopmentMode] = useState(true);
 
   useEffect(() => {
     const loadDashboardData = async () => {
@@ -33,21 +36,20 @@ const Index = () => {
   }, []);
 
   if (isLoading) {
-    return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
-        <div className="lcars-panel p-8 animate-pulse">
-          <div className="text-xl text-primary">Initializing LCARS Interface...</div>
-        </div>
-      </div>
-    );
+    return <LCARSLoader message="INITIALIZING LCARS INTERFACE" />;
   }
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
       <div className="lcars-grid">
         {/* Top Status Strip */}
-        <div className="col-span-6 row-span-1">
-          <StatusStrip status={systemStatus} />
+        <div className="col-span-6 row-span-1 flex items-center">
+          <div className="flex-1">
+            <StatusStrip status={systemStatus} />
+          </div>
+          <div className="ml-4">
+            <DevelopmentToggle onModeChange={setIsDevelopmentMode} />
+          </div>
         </div>
 
         {/* Main Tile Grid */}

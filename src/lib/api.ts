@@ -21,8 +21,8 @@ export interface CameraStatus {
 
 // Mock API endpoints - replace with real endpoints in production
 export const fetchSystemStatus = async (): Promise<SystemStatus> => {
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 100 + Math.random() * 200));
+  // Simulate API delay (reduced for better UX)
+  await new Promise(resolve => setTimeout(resolve, Math.random() * 50));
   
   return {
     cpuTemp: 45 + Math.random() * 20, // 45-65°C
@@ -35,7 +35,7 @@ export const fetchSystemStatus = async (): Promise<SystemStatus> => {
 };
 
 export const fetchKioskConfig = async (): Promise<KioskConfig> => {
-  await new Promise(resolve => setTimeout(resolve, 50));
+  await new Promise(resolve => setTimeout(resolve, Math.random() * 30));
   
   return {
     rotation: ['HA', 'Photos', 'Cam'],
@@ -44,7 +44,7 @@ export const fetchKioskConfig = async (): Promise<KioskConfig> => {
 };
 
 export const fetchCameraStatus = async (): Promise<CameraStatus> => {
-  await new Promise(resolve => setTimeout(resolve, 100));
+  await new Promise(resolve => setTimeout(resolve, Math.random() * 40));
   
   const isActive = Math.random() > 0.2; // 80% active rate
   
@@ -56,7 +56,7 @@ export const fetchCameraStatus = async (): Promise<CameraStatus> => {
 };
 
 export const requestCameraToken = async (deviceId: string): Promise<{ token: string; streamUrl: string }> => {
-  await new Promise(resolve => setTimeout(resolve, 200));
+  await new Promise(resolve => setTimeout(resolve, 50 + Math.random() * 50));
   
   if (Math.random() > 0.1) { // 90% success rate
     return {
@@ -69,7 +69,7 @@ export const requestCameraToken = async (deviceId: string): Promise<{ token: str
 };
 
 export const triggerSystemAction = async (action: 'restart' | 'refresh' | 'logs'): Promise<{ success: boolean }> => {
-  await new Promise(resolve => setTimeout(resolve, 500));
+  await new Promise(resolve => setTimeout(resolve, 100 + Math.random() * 100));
   
   console.log(`LCARS: Triggered ${action} action`);
   return { success: true };
