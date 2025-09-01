@@ -1,13 +1,21 @@
 import { useState, useEffect } from 'react';
 import { useLCARSSound } from '@/hooks/useLCARSSound';
-import { SystemStatus } from '@/lib/api';
+import { SystemStatus, KioskConfig, CameraStatus, fetchCameraStatus } from '@/lib/api';
+import { LCARSPanel } from './LCARSPanel';
+import { LCARSBar } from './LCARSBar';
+import { NavigationButtons } from './NavigationButtons';
+import { DashboardContent } from './DashboardContent';
+import { DataCascade } from './DataCascade';
 
 interface LCARSInterfaceProps {
   systemStatus: SystemStatus | null;
+  config: KioskConfig | null;
 }
 
-export const LCARSInterface = ({ systemStatus }: LCARSInterfaceProps) => {
+export const LCARSInterface = ({ systemStatus, config }: LCARSInterfaceProps) => {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [activeSection, setActiveSection] = useState('dashboard');
+  const [cameraStatus, setCameraStatus] = useState<CameraStatus | null>(null);
   const { beep } = useLCARSSound();
 
   useEffect(() => {
@@ -17,17 +25,33 @@ export const LCARSInterface = ({ systemStatus }: LCARSInterfaceProps) => {
     return () => clearInterval(timer);
   }, []);
 
-  const handleButtonClick = (action: string) => {
-    beep('beep2');
-    console.log(`LCARS: ${action} activated`);
+  useEffect(() => {
+    const loadCameraStatus = async () => {
+      try {
+        const status = await fetchCameraStatus();
+        setCameraStatus(status);
+      } catch (error) {
+        console.error('Failed to load camera status:', error);
+      }
+    };
+
+    loadCameraStatus();
+    const interval = setInterval(loadCameraStatus, 10000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleNavigation = (section: string) => {
+    setActiveSection(section);
   };
 
-  const playSoundAndRedirect = (soundType: 'audio2' | 'audio4', action: string) => {
+  const handleLCARSClick = () => {
     beep('beep2');
-    handleButtonClick(action);
+    setActiveSection('dashboard');
+    console.log('LCARS: Navigation to main dashboard');
   };
 
   const topFunction = () => {
+    beep('beep4');
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
@@ -35,142 +59,48 @@ export const LCARSInterface = ({ systemStatus }: LCARSInterfaceProps) => {
     <div className="wrap-all">
       <div className="wrap">
         <div className="left-frame-top">
-          <button 
-            onClick={() => playSoundAndRedirect('audio2', 'LCARS')} 
-            className="panel-1-button"
+          <LCARSPanel 
+            variant={2}
+            size="large"
+            shape="rounded-top-left"
+            interactive
+            onClick={handleLCARSClick}
           >
             LCARS
-          </button>
-          <div className="panel-2">
-            02<span className="hop">-262000</span>
-          </div>
+          </LCARSPanel>
+          <LCARSPanel 
+            variant={1}
+            size="xl"
+            shape="rounded-left"
+            panelNumber="02-262000"
+          />
         </div>
         <div className="right-frame-top">
-          <div className="banner">LCARS 57436.2</div>
+          <div className="banner">
+            LCARS {currentTime.toLocaleString('en-US', { 
+              year: '2-digit',
+              month: '2-digit', 
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: false
+            }).replace(/[\/,]/g, '').replace(/\s/g, '.')}
+          </div>
           <div className="data-cascade-button-group">
             <div className="data-wrapper">
-              <div className="data-column">
-                <div className="dc-row-1 font-arctic-ice">47</div>
-                <div className="dc-row-2">31</div>
-                <div className="dc-row-3">28</div>
-                <div className="dc-row-4">94</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1">329</div>
-                <div className="dc-row-2 font-night-rain">128</div>
-                <div className="dc-row-3">605</div>
-                <div className="dc-row-4">704</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1 font-night-rain">39725514862</div>
-                <div className="dc-row-2 font-arctic-ice">51320259663</div>
-                <div className="dc-row-3 font-alpha-blue">21857221984</div>
-                <div className="dc-row-4">40372566301</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1 font-arctic-ice">56</div>
-                <div className="dc-row-2 font-night-rain">04</div>
-                <div className="dc-row-3 font-night-rain">40</div>
-                <div className="dc-row-4 font-night-rain">35</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1 font-arctic-ice">614</div>
-                <div className="dc-row-2 font-arctic-ice">883</div>
-                <div className="dc-row-3 font-alpha-blue">109</div>
-                <div className="dc-row-4">297</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1 darkspace darkfont">000</div>
-                <div className="dc-row-2 darkspace font-alpha-blue">13</div>
-                <div className="dc-row-3 darkspace font-arctic-ice">05</div>
-                <div className="dc-row-4 darkspace font-night-rain">25</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1">48</div>
-                <div className="dc-row-2 font-night-rain">07</div>
-                <div className="dc-row-3">38</div>
-                <div className="dc-row-4">62</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1">416</div>
-                <div className="dc-row-2 font-night-rain">001</div>
-                <div className="dc-row-3">888</div>
-                <div className="dc-row-4">442</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1 font-night-rain">86225514862</div>
-                <div className="dc-row-2 font-arctic-ice">31042009183</div>
-                <div className="dc-row-3 font-alpha-blue">74882306985</div>
-                <div className="dc-row-4">54048523421</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1 font-alpha-blue">10</div>
-                <div className="dc-row-2">80</div>
-                <div className="dc-row-3 font-night-rain">31</div>
-                <div className="dc-row-4 font-alpha-blue">85</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1 font-alpha-blue">87</div>
-                <div className="dc-row-2">71</div>
-                <div className="dc-row-3 font-night-rain">40</div>
-                <div className="dc-row-4 font-night-rain">26</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1">98</div>
-                <div className="dc-row-2">63</div>
-                <div className="dc-row-3 font-night-rain">52</div>
-                <div className="dc-row-4 font-alpha-blue">71</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1">118</div>
-                <div className="dc-row-2">270</div>
-                <div className="dc-row-3">395</div>
-                <div className="dc-row-4">260</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1">8675309</div>
-                <div className="dc-row-2 font-night-rain">7952705</div>
-                <div className="dc-row-3">9282721</div>
-                <div className="dc-row-4">4981518</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1 darkspace darkfont">000</div>
-                <div className="dc-row-2 darkspace font-alpha-blue">99</div>
-                <div className="dc-row-3 darkspace font-arctic-ice">10</div>
-                <div className="dc-row-4 darkspace font-night-rain">84</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1">65821407321</div>
-                <div className="dc-row-2 font-alpha-blue">54018820533</div>
-                <div className="dc-row-3 font-night-rain">27174523016</div>
-                <div className="dc-row-4">38954062564</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1 font-arctic-ice">999</div>
-                <div className="dc-row-2 font-arctic-ice">202</div>
-                <div className="dc-row-3 font-alpha-blue">574</div>
-                <div className="dc-row-4">293</div>
-              </div>
-              <div className="data-column">
-                <div className="dc-row-1">3872</div>
-                <div className="dc-row-2 font-night-rain">1105</div>
-                <div className="dc-row-3">1106</div>
-                <div className="dc-row-4 font-alpha-blue">7411</div>
-              </div>
+              <DataCascade columns={18} animated={true} />
             </div>
-            <nav>
-              <button onClick={() => playSoundAndRedirect('audio2', 'HOME ASSISTANT')}>01</button>
-              <button onClick={() => playSoundAndRedirect('audio2', 'PHOTO FRAME')}>02</button>
-              <button onClick={() => playSoundAndRedirect('audio2', 'LIVE CAMERA')}>03</button>
-              <button onClick={() => playSoundAndRedirect('audio2', 'SYSTEM CONTROLS')}>04</button>
-            </nav>
+            <NavigationButtons 
+              onNavigate={handleNavigation}
+              activeSection={activeSection}
+            />
           </div>
           <div className="bar-panel first-bar-panel">
-            <div className="bar-1"> </div>
-            <div className="bar-2"> </div>
-            <div className="bar-3"> </div>
-            <div className="bar-4"> </div>
-            <div className="bar-5"> </div>
+            <LCARSBar variant={1} width="flex" />
+            <LCARSBar variant={2} width="fixed" />
+            <LCARSBar variant={3} width="flex" />
+            <LCARSBar variant={4} width="xl" />
+            <LCARSBar variant={5} width="large" />
           </div>
         </div>
       </div>
@@ -179,10 +109,10 @@ export const LCARSInterface = ({ systemStatus }: LCARSInterfaceProps) => {
         <div className="block-left"> </div>
         <div className="block-right">
           <div className="block-row">
-            <div className="bar-11"> </div>
-            <div className="bar-12"> </div>
-            <div className="bar-13"> </div>
-            <div className="bar-14">
+            <LCARSBar variant={11} width="flex" />
+            <LCARSBar variant={12} width="medium" />
+            <LCARSBar variant={13} width="flex" />
+            <div className="relative lcars-panel-4 w-32 h-full rounded-full">
               <div className="blockhead"> </div>
             </div>
           </div>
@@ -192,49 +122,47 @@ export const LCARSInterface = ({ systemStatus }: LCARSInterfaceProps) => {
       <div className="wrap">
         <div className="left-frame">
           <button 
-            onClick={() => {
-              topFunction();
-              playSoundAndRedirect('audio4', 'SCREEN TOP');
-            }} 
+            onClick={topFunction}
+            className="lcars-panel-3 h-12 rounded-l-[40px] flex items-center px-6 text-background lcars-text font-bold cursor-pointer border-0 transition-all duration-200 hover:brightness-110 active:brightness-90"
             id="topBtn"
           >
             <span className="hop">screen</span> top
           </button>
-          <div>
-            <div className="panel-3">03<span className="hop">-111968</span></div>
-            <div className="panel-4">04<span className="hop">-041969</span></div>
-            <div className="panel-5">05<span className="hop">-1701D</span></div>
-            <div className="panel-6">06<span className="hop">-071984</span></div>
+          <div className="space-y-2">
+            <LCARSPanel variant={3} shape="rounded-left" panelNumber="03-111968" />
+            <LCARSPanel variant={4} shape="rounded-left" panelNumber="04-041969" />
+            <LCARSPanel variant={5} shape="rounded-left" panelNumber="05-1701D" />
+            <LCARSPanel variant={6} shape="rounded-left" panelNumber="06-071984" />
           </div>
           <div>
-            <div className="panel-7">07<span className="hop">-081940</span></div>
+            <LCARSPanel variant={7} shape="rounded-left" panelNumber="07-081940" />
           </div>
         </div>
         <div className="right-frame">
           <div className="bar-panel">
-            <div className="bar-6"> </div>
-            <div className="bar-7"> </div>
-            <div className="bar-8"> </div>
-            <div className="bar-9"> </div>
-            <div className="bar-10"> </div>
+            <LCARSBar variant={6} width="flex" />
+            <LCARSBar variant={7} width="medium" />
+            <LCARSBar variant={8} width="flex" />
+            <LCARSBar variant={9} width="fixed" />
+            <LCARSBar variant={10} width="xl" />
           </div>
-          <main>
-            <h1>Hello</h1>
-            <h2>Welcome to LCARS • Lower Decks PADD Theme</h2>
-            <h3 className="font-radioactive">Version 24.2</h3>
-            <h4>Replace This Content With Your Own</h4>
+          <DashboardContent 
+            activeSection={activeSection}
+            config={config}
+            cameraStatus={cameraStatus}
+          />
+          <footer className="px-8 py-4 text-center text-sm text-muted-foreground">
             {systemStatus && (
-              <div className="text-lg text-muted-foreground lcars-text">
+              <div className="mb-2 lcars-text">
                 CPU: {systemStatus.cpuTemp.toFixed(1)}°C • RAM: {systemStatus.ramPct.toFixed(0)}% • 
                 TUNNEL: {systemStatus.tunnel.toUpperCase()}
               </div>
             )}
-            <p className="go-big">Live long and prosper.</p>
-          </main>
-          <footer>
             Content Copyright © 2025 LCARS Dashboard<br />
             LCARS Inspired Website Template by{' '}
-            <a href="https://www.thelcars.com">www.TheLCARS.com</a>.
+            <a href="https://www.thelcars.com" className="text-primary hover:brightness-110">
+              www.TheLCARS.com
+            </a>
           </footer>
         </div>
       </div>

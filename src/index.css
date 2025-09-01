@@ -7,7 +7,7 @@ All colors are HSL format for consistency */
 
 @layer base {
   :root {
-    /* LCARS Nemesis Blue Theme */
+    /* Default Nemesis Blue Theme */
     --background: 220 100% 0%;
     --foreground: 217 91% 60%;
     
@@ -97,6 +97,70 @@ All colors are HSL format for consistency */
     /* LCARS Panel Shadows */
     --shadow-panel: 0 4px 12px -4px hsl(var(--lcars-cool) / 0.2);
     --shadow-elevated: 0 16px 50px -12px hsl(var(--primary) / 0.25);
+  }
+
+  /* Classic LCARS Theme */
+  .theme-classic {
+    --background: 220 100% 0%;
+    --foreground: 300 89% 83%;
+    --primary: 300 89% 83%;
+    --lcars-cardinal: 0 72% 51%;
+    --lcars-cool: 246 89% 73%;
+    --lcars-evening: 246 89% 73%;
+    --lcars-galaxy-gray: 240 10% 40%;
+    --lcars-ghost: 246 89% 83%;
+    --lcars-grape: 270 43% 61%;
+    --lcars-honey: 42 100% 50%;
+    --lcars-lawn: 75 100% 40%;
+    --lcars-martian: 75 58% 47%;
+    --lcars-midnight: 246 89% 27%;
+    --lcars-moonbeam: 246 89% 93%;
+    --lcars-pumpkinshade: 24 100% 60%;
+    --lcars-roseblush: 352 63% 69%;
+    --lcars-tangerine: 24 100% 50%;
+    --lcars-wheat: 42 47% 75%;
+    --panel-color-1: var(--lcars-grape);
+    --panel-color-2: var(--lcars-moonbeam);
+    --panel-color-3: var(--lcars-cool);
+    --panel-color-4: var(--lcars-cardinal);
+    --panel-color-5: var(--lcars-tangerine);
+    --panel-color-6: var(--lcars-pumpkinshade);
+    --panel-color-7: var(--lcars-cool);
+    --panel-color-8: var(--lcars-pumpkinshade);
+    --panel-color-9: var(--lcars-cardinal);
+    --panel-color-10: var(--lcars-tangerine);
+  }
+
+  /* Lower Decks Theme */  
+  .theme-lower-decks {
+    --background: 220 100% 0%;
+    --foreground: 271 96% 87%;
+    --primary: 271 96% 87%;
+    --lcars-cardinal: 332 100% 58%;
+    --lcars-cool: 195 100% 76%;
+    --lcars-evening: 195 100% 60%;
+    --lcars-galaxy-gray: 240 10% 40%;
+    --lcars-ghost: 195 100% 86%;
+    --lcars-grape: 271 96% 87%;
+    --lcars-honey: 42 100% 50%;
+    --lcars-lawn: 75 100% 40%;
+    --lcars-martian: 75 58% 47%;
+    --lcars-midnight: 195 100% 27%;
+    --lcars-moonbeam: 195 100% 93%;
+    --lcars-pumpkinshade: 24 100% 60%;
+    --lcars-roseblush: 332 100% 75%;
+    --lcars-tangerine: 24 100% 50%;
+    --lcars-wheat: 42 47% 75%;
+    --panel-color-1: var(--lcars-grape);
+    --panel-color-2: var(--lcars-cool);
+    --panel-color-3: var(--lcars-evening);
+    --panel-color-4: var(--lcars-cardinal);
+    --panel-color-5: var(--lcars-roseblush);
+    --panel-color-6: var(--lcars-cool);
+    --panel-color-7: var(--lcars-evening);
+    --panel-color-8: var(--lcars-grape);
+    --panel-color-9: var(--lcars-cardinal);
+    --panel-color-10: var(--lcars-roseblush);
   }
 }
 
