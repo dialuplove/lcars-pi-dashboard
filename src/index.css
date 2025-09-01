@@ -65,10 +65,10 @@ All colors are HSL format for consistency */
     --lcars-tangerine: 24 94% 67%;
     --lcars-wheat: 42 36% 73%;
     
-    /* Panel Colors */
+    /* LCARS Panel Colors */
     --panel-color-1: var(--lcars-wheat);
     --panel-color-2: var(--lcars-moonbeam);
-    --panel-color-3: var(--lcars-evening);
+    --panel-color-3: var(--lcars-cool);
     --panel-color-4: var(--lcars-evening);
     --panel-color-5: var(--lcars-cool);
     --panel-color-6: var(--lcars-evening);
@@ -138,24 +138,68 @@ All colors are HSL format for consistency */
 @layer components {
   /* LCARS Panel Base */
   .lcars-panel {
-    @apply bg-card border border-border shadow-[var(--shadow-panel)] 
-           transition-all duration-300 hover:shadow-[var(--shadow-elevated)];
+    @apply transition-all duration-300;
     border-radius: 0;
-    border-width: 0.25rem;
-    border-color: hsl(var(--background));
   }
 
-  /* LCARS Panel Variants */
-  .lcars-panel-1 { background-color: hsl(var(--panel-color-1)); color: hsl(var(--background)); }
-  .lcars-panel-2 { background-color: hsl(var(--panel-color-2)); color: hsl(var(--background)); }
-  .lcars-panel-3 { background-color: hsl(var(--panel-color-3)); color: hsl(var(--background)); }
-  .lcars-panel-4 { background-color: hsl(var(--panel-color-4)); color: hsl(var(--background)); }
-  .lcars-panel-5 { background-color: hsl(var(--panel-color-5)); color: hsl(var(--background)); }
-  .lcars-panel-6 { background-color: hsl(var(--panel-color-6)); color: hsl(var(--background)); }
-  .lcars-panel-7 { background-color: hsl(var(--panel-color-7)); color: hsl(var(--background)); }
-  .lcars-panel-8 { background-color: hsl(var(--panel-color-8)); color: hsl(var(--background)); }
-  .lcars-panel-9 { background-color: hsl(var(--panel-color-9)); color: hsl(var(--background)); }
-  .lcars-panel-10 { background-color: hsl(var(--panel-color-10)); color: hsl(var(--background)); }
+  /* LCARS Panel Variants with HSL colors */
+  .lcars-panel-1 { 
+    background-color: hsl(var(--panel-color-1)); 
+    color: hsl(var(--background)); 
+  }
+  .lcars-panel-2 { 
+    background-color: hsl(var(--panel-color-2)); 
+    color: hsl(var(--background)); 
+  }
+  .lcars-panel-3 { 
+    background-color: hsl(var(--panel-color-3)); 
+    color: hsl(var(--background)); 
+  }
+  .lcars-panel-4 { 
+    background-color: hsl(var(--panel-color-4)); 
+    color: hsl(var(--background)); 
+  }
+  .lcars-panel-5 { 
+    background-color: hsl(var(--panel-color-5)); 
+    color: hsl(var(--background)); 
+  }
+  .lcars-panel-6 { 
+    background-color: hsl(var(--panel-color-6)); 
+    color: hsl(var(--background)); 
+  }
+  .lcars-panel-7 { 
+    background-color: hsl(var(--panel-color-7)); 
+    color: hsl(var(--background)); 
+  }
+  .lcars-panel-8 { 
+    background-color: hsl(var(--panel-color-8)); 
+    color: hsl(var(--background)); 
+  }
+  .lcars-panel-9 { 
+    background-color: hsl(var(--panel-color-9)); 
+    color: hsl(var(--background)); 
+  }
+  .lcars-panel-10 { 
+    background-color: hsl(var(--panel-color-10)); 
+    color: hsl(var(--background)); 
+  }
+
+  /* LCARS Component Colors */
+  .bg-lcars-cardinal { background-color: hsl(var(--lcars-cardinal)); }
+  .bg-lcars-cool { background-color: hsl(var(--lcars-cool)); }
+  .bg-lcars-evening { background-color: hsl(var(--lcars-evening)); }
+  .bg-lcars-galaxy-gray { background-color: hsl(var(--lcars-galaxy-gray)); }
+  .bg-lcars-ghost { background-color: hsl(var(--lcars-ghost)); }
+  .bg-lcars-grape { background-color: hsl(var(--lcars-grape)); }
+  .bg-lcars-honey { background-color: hsl(var(--lcars-honey)); }
+  .bg-lcars-lawn { background-color: hsl(var(--lcars-lawn)); }
+  .bg-lcars-martian { background-color: hsl(var(--lcars-martian)); }
+  .bg-lcars-midnight { background-color: hsl(var(--lcars-midnight)); }
+  .bg-lcars-moonbeam { background-color: hsl(var(--lcars-moonbeam)); }
+  .bg-lcars-pumpkinshade { background-color: hsl(var(--lcars-pumpkinshade)); }
+  .bg-lcars-roseblush { background-color: hsl(var(--lcars-roseblush)); }
+  .bg-lcars-tangerine { background-color: hsl(var(--lcars-tangerine)); }
+  .bg-lcars-wheat { background-color: hsl(var(--lcars-wheat)); }
 
   /* LCARS Typography */
   .lcars-text {
