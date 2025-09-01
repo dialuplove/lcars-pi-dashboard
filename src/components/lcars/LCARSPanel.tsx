@@ -64,8 +64,9 @@ export const LCARSPanel = ({
   const { beep } = useLCARSSound();
 
   const handleClick = () => {
-    if (interactive && soundEffect) {
-      beep(soundEffect);
+    if (interactive) {
+      // Always play sound for interactive panels, default to beep2 if no soundEffect specified
+      beep(soundEffect || 'beep2');
     }
     
     if (onClick) {

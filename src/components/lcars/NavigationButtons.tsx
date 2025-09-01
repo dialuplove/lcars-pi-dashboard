@@ -25,13 +25,13 @@ export const NavigationButtons = ({ onNavigate, activeSection, className }: Navi
   };
 
   return (
-    <nav className={cn("flex gap-4 p-4", className)}>
+    <nav className={cn("grid grid-cols-2 gap-4 p-4", className)}>
       {navigationItems.map((item, index) => (
         <button
           key={item.id}
           onClick={() => handleNavClick(item.id, item.title)}
           className={cn(
-            "flex-1 h-16 text-xl rounded-[20px] border-0 cursor-pointer min-w-24",
+            "h-20 text-xl rounded-[20px] border-0 cursor-pointer",
             "lcars-text font-bold transition-all duration-200",
             "hover:brightness-110 active:brightness-90",
             activeSection === item.id && "brightness-125 scale-105",
