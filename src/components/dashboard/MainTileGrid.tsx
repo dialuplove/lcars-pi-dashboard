@@ -28,24 +28,24 @@ export const MainTileGrid = ({ config }: MainTileGridProps) => {
   }, []);
 
   return (
-    <div className="h-full grid grid-cols-4 grid-rows-2 gap-4">
+    <div className="h-full grid grid-cols-4 grid-rows-2 gap-4 p-4 overflow-hidden">
       {/* Home Assistant - Large tile (2x2) */}
-      <div className="col-span-2 row-span-2">
+      <div className="col-span-2 row-span-2 min-h-0 overflow-hidden">
         <HomeAssistantTile />
       </div>
 
       {/* Photo Frame Controls - Top right */}
-      <div className="col-span-2 row-span-1">
+      <div className="col-span-2 row-span-1 min-h-0 overflow-hidden">
         <PhotoFrameTile rotation={config?.rotation} intervalSec={config?.intervalSec} />
       </div>
 
       {/* Live Camera - Bottom right left */}
-      <div className="col-span-1 row-span-1">
+      <div className="col-span-1 row-span-1 min-h-0 overflow-hidden">
         <LiveCamTile cameraStatus={cameraStatus} />
       </div>
 
       {/* System Controls - Bottom right right */}
-      <div className="col-span-1 row-span-1">
+      <div className="col-span-1 row-span-1 min-h-0 overflow-hidden">
         <SystemControlsTile />
       </div>
     </div>

@@ -61,7 +61,7 @@ export const LiveCamTile = ({ cameraStatus }: LiveCamTileProps) => {
 
       <div className="flex-1 p-4 flex flex-col">
         {/* Camera Preview/Status */}
-        <div className="flex-1 bg-muted rounded-lg flex items-center justify-center mb-4 relative overflow-hidden">
+        <div className="flex-1 bg-muted rounded-lg flex items-center justify-center mb-4 relative overflow-hidden min-h-0 max-h-full">
           {cameraStatus?.active ? (
             <div className="text-center">
               <Camera className="w-12 h-12 text-muted-foreground mb-2 mx-auto" />
