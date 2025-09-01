@@ -7,63 +7,96 @@ All colors are HSL format for consistency */
 
 @layer base {
   :root {
-    /* LCARS Dark Space Theme */
-    --background: 220 20% 8%;
-    --foreground: 45 100% 85%;
-
+    /* LCARS Nemesis Blue Theme */
+    --background: 220 100% 0%;
+    --foreground: 217 91% 60%;
+    
     /* LCARS Panel Colors */
-    --card: 220 15% 12%;
-    --card-foreground: 45 100% 85%;
-
-    --popover: 220 15% 10%;
-    --popover-foreground: 45 100% 85%;
-
-    /* LCARS Primary - Signature Orange/Amber */
-    --primary: 25 100% 70%;
-    --primary-foreground: 220 20% 8%;
-
+    --card: 220 50% 6%;
+    --card-foreground: 217 91% 60%;
+    
+    --popover: 220 50% 6%;
+    --popover-foreground: 217 91% 60%;
+    
+    /* LCARS Primary - Evening Blue */
+    --primary: 217 91% 60%;
+    --primary-foreground: 220 100% 0%;
+    
     /* LCARS Secondary - Cool Blue */
-    --secondary: 220 100% 75%;
-    --secondary-foreground: 220 20% 8%;
-
-    /* LCARS Accent - Magenta/Purple */
-    --accent: 280 100% 80%;
-    --accent-foreground: 220 20% 8%;
-
+    --secondary: 220 20% 14%;
+    --secondary-foreground: 217 91% 60%;
+    
+    /* LCARS Accent - Cool Blue */
+    --accent: 217 91% 60%;
+    --accent-foreground: 220 100% 0%;
+    
     /* LCARS Status Colors */
-    --success: 140 100% 70%;
-    --success-foreground: 220 20% 8%;
+    --success: 142 76% 36%;
+    --success-foreground: 355 7% 97%;
     
-    --warning: 50 100% 70%;
-    --warning-foreground: 220 20% 8%;
+    --warning: 38 92% 50%;
+    --warning-foreground: 220 100% 0%;
     
-    --destructive: 0 100% 70%;
-    --destructive-foreground: 220 20% 8%;
-
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 20% 98%;
+    
     /* Interface Elements */
-    --muted: 220 15% 15%;
-    --muted-foreground: 45 50% 65%;
-
-    --border: 220 20% 20%;
-    --input: 220 15% 15%;
-    --ring: 25 100% 70%;
-
+    --muted: 220 20% 14%;
+    --muted-foreground: 215 20% 65%;
+    
+    --border: 220 46% 16%;
+    --input: 220 46% 16%;
+    --ring: 217 91% 60%;
+    
+    /* LCARS Nemesis Blue Color Palette */
+    --lcars-cardinal: 0 75% 47%;
+    --lcars-cool: 217 91% 60%;
+    --lcars-evening: 217 91% 47%;
+    --lcars-galaxy-gray: 240 15% 36%;
+    --lcars-ghost: 217 91% 70%;
+    --lcars-grape: 270 43% 61%;
+    --lcars-honey: 42 95% 80%;
+    --lcars-lawn: 75 67% 36%;
+    --lcars-martian: 75 58% 47%;
+    --lcars-midnight: 217 91% 27%;
+    --lcars-moonbeam: 217 67% 97%;
+    --lcars-pumpkinshade: 24 94% 67%;
+    --lcars-roseblush: 0 36% 58%;
+    --lcars-tangerine: 24 94% 67%;
+    --lcars-wheat: 42 36% 73%;
+    
+    /* Panel Colors */
+    --panel-color-1: var(--lcars-wheat);
+    --panel-color-2: var(--lcars-moonbeam);
+    --panel-color-3: var(--lcars-evening);
+    --panel-color-4: var(--lcars-evening);
+    --panel-color-5: var(--lcars-cool);
+    --panel-color-6: var(--lcars-evening);
+    --panel-color-7: var(--lcars-evening);
+    --panel-color-8: var(--lcars-moonbeam);
+    --panel-color-9: var(--lcars-evening);
+    --panel-color-10: var(--lcars-evening);
+    
+    /* Data Cascade */
+    --data-cascade-color: var(--lcars-evening);
+    --data-cascade-light: var(--lcars-moonbeam);
     
     /* LCARS Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(25 100% 70%), hsl(35 100% 75%));
-    --gradient-secondary: linear-gradient(135deg, hsl(220 100% 75%), hsl(240 100% 80%));
-    --gradient-accent: linear-gradient(135deg, hsl(280 100% 80%), hsl(300 100% 75%));
+    --gradient-primary: linear-gradient(135deg, hsl(var(--primary)), hsl(217 91% 70%));
+    --gradient-secondary: linear-gradient(135deg, hsl(var(--secondary)), hsl(220 20% 24%));
+    --gradient-accent: linear-gradient(135deg, hsl(var(--accent)), hsl(217 91% 70%));
     
     /* LCARS Shadows and Glows */
-    --glow-primary: 0 0 20px hsl(25 100% 70% / 0.5);
-    --glow-secondary: 0 0 20px hsl(220 100% 75% / 0.5);
-    --glow-success: 0 0 15px hsl(140 100% 70% / 0.4);
-    --glow-warning: 0 0 15px hsl(50 100% 70% / 0.4);
-    --glow-destructive: 0 0 15px hsl(0 100% 70% / 0.4);
+    --glow-primary: 0 0 20px hsl(var(--primary) / 0.3);
+    --glow-secondary: 0 0 20px hsl(var(--secondary) / 0.3);
+    --glow-success: 0 0 15px hsl(var(--success) / 0.4);
+    --glow-warning: 0 0 15px hsl(var(--warning) / 0.4);
+    --glow-destructive: 0 0 15px hsl(var(--destructive) / 0.4);
+    --glow-lcars: 0 0 30px hsl(var(--lcars-cool) / 0.4);
     
     /* LCARS Panel Shadows */
-    --shadow-panel: 0 4px 12px hsl(220 20% 5% / 0.8);
-    --shadow-elevated: 0 8px 24px hsl(220 20% 5% / 0.9);
+    --shadow-panel: 0 4px 12px -4px hsl(var(--lcars-cool) / 0.2);
+    --shadow-elevated: 0 16px 50px -12px hsl(var(--primary) / 0.25);
   }
 }
 
@@ -72,9 +105,27 @@ All colors are HSL format for consistency */
     @apply border-border;
   }
 
+  /* Antonio Font Integration */
+  @font-face {
+    font-family: 'Antonio';
+    font-weight: 400;
+    src: url('/fonts/Antonio-Regular.woff2') format('woff2'),
+         url('/fonts/Antonio-Regular.woff') format('woff');
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Antonio';
+    font-weight: 700;
+    src: url('/fonts/Antonio-Bold.woff2') format('woff2'),
+         url('/fonts/Antonio-Bold.woff') format('woff');
+    font-display: swap;
+  }
+
   body {
-    @apply bg-background text-foreground cursor-none;
-    font-family: 'Orbitron', 'SF Mono', 'Monaco', 'Consolas', monospace;
+    @apply bg-background text-foreground;
+    font-family: 'Antonio', 'Arial Narrow', 'Avenir Next Condensed', sans-serif;
+    cursor: crosshair;
   }
   
   /* LCARS Touch Targets */
@@ -87,9 +138,79 @@ All colors are HSL format for consistency */
 @layer components {
   /* LCARS Panel Base */
   .lcars-panel {
-    @apply bg-card border border-border rounded-2xl shadow-[var(--shadow-panel)] 
+    @apply bg-card border border-border shadow-[var(--shadow-panel)] 
            transition-all duration-300 hover:shadow-[var(--shadow-elevated)];
+    border-radius: 0;
+    border-width: 0.25rem;
+    border-color: hsl(var(--background));
   }
+
+  /* LCARS Panel Variants */
+  .lcars-panel-1 { background-color: hsl(var(--panel-color-1)); color: hsl(var(--background)); }
+  .lcars-panel-2 { background-color: hsl(var(--panel-color-2)); color: hsl(var(--background)); }
+  .lcars-panel-3 { background-color: hsl(var(--panel-color-3)); color: hsl(var(--background)); }
+  .lcars-panel-4 { background-color: hsl(var(--panel-color-4)); color: hsl(var(--background)); }
+  .lcars-panel-5 { background-color: hsl(var(--panel-color-5)); color: hsl(var(--background)); }
+  .lcars-panel-6 { background-color: hsl(var(--panel-color-6)); color: hsl(var(--background)); }
+  .lcars-panel-7 { background-color: hsl(var(--panel-color-7)); color: hsl(var(--background)); }
+  .lcars-panel-8 { background-color: hsl(var(--panel-color-8)); color: hsl(var(--background)); }
+  .lcars-panel-9 { background-color: hsl(var(--panel-color-9)); color: hsl(var(--background)); }
+  .lcars-panel-10 { background-color: hsl(var(--panel-color-10)); color: hsl(var(--background)); }
+
+  /* LCARS Typography */
+  .lcars-text {
+    font-family: 'Antonio', 'Arial Narrow', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  .lcars-number {
+    font-family: 'Antonio', monospace;
+    font-weight: 400;
+  }
+
+  .hop {
+    opacity: 0.6;
+    font-size: 0.8em;
+  }
+
+  /* Data Cascade Animation */
+  @keyframes data-cascade-1 {
+    0%, 3.99% { color: hsl(var(--background)); }
+    4%, 45.99% { color: hsl(var(--data-cascade-color)); }
+    46%, 49.99% { color: hsl(var(--data-cascade-light)); }
+    50%, 63.99% { color: hsl(var(--data-cascade-color)); }
+    64%, 67.99% { color: hsl(var(--data-cascade-light)); }
+    68%, 100% { color: hsl(var(--data-cascade-color)); }
+  }
+
+  @keyframes data-cascade-2 {
+    0%, 12.99% { color: hsl(var(--background)); }
+    13%, 49.99% { color: hsl(var(--data-cascade-color)); }
+    50%, 53.99% { color: hsl(var(--data-cascade-light)); }
+    54%, 67.99% { color: hsl(var(--data-cascade-color)); }
+    68%, 71.99% { color: hsl(var(--data-cascade-light)); }
+    72%, 100% { color: hsl(var(--data-cascade-color)); }
+  }
+
+  @keyframes data-cascade-3 {
+    0%, 26.99% { color: hsl(var(--background)); }
+    27%, 40.99% { color: hsl(var(--data-cascade-light)); }
+    41%, 53.99% { color: hsl(var(--data-cascade-color)); }
+    54%, 57.99% { color: hsl(var(--data-cascade-light)); }
+    58%, 71.99% { color: hsl(var(--data-cascade-color)); }
+    72%, 75.99% { color: hsl(var(--data-cascade-light)); }
+    76%, 100% { color: hsl(var(--data-cascade-color)); }
+  }
+
+  .data-cascade-row-1 { animation: data-cascade-1 6000ms ease 200ms infinite; }
+  .data-cascade-row-2 { animation: data-cascade-1 6000ms ease 300ms infinite; }
+  .data-cascade-row-3 { animation: data-cascade-2 6000ms ease 200ms infinite; }
+  .data-cascade-row-4 { animation: data-cascade-2 6000ms ease 400ms infinite; }
+  .data-cascade-row-5 { animation: data-cascade-3 6000ms ease 200ms infinite; }
+  .data-cascade-row-6 { animation: data-cascade-3 6000ms ease 200ms infinite; }
+  .data-cascade-row-7 { animation: data-cascade-3 6000ms ease 200ms infinite; }
   
   /* LCARS Glow Effects */
   .lcars-glow-primary {

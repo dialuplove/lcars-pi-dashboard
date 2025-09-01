@@ -1,4 +1,4 @@
-import { Button } from '@/components/ui/button';
+import { LCARSButton } from '@/components/lcars/LCARSButton';
 import { Settings, RotateCcw, RefreshCw, HelpCircle } from 'lucide-react';
 import { triggerSystemAction } from '@/lib/api';
 import { useToast } from '@/hooks/use-toast';
@@ -44,48 +44,50 @@ export const ActionBar = () => {
   };
 
   return (
-    <div className="lcars-panel h-full flex items-center justify-center bg-gradient-secondary">
-      <div className="flex items-center space-x-6">
-        <Button
-          variant="outline"
-          size="lg"
-          onClick={() => handleAction('settings')}
-          className="h-16 px-8 bg-transparent border-2 border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary lcars-touch"
-        >
-          <Settings className="w-6 h-6 mr-3" />
-          SETTINGS
-        </Button>
+    <div className="h-20 bg-card border-t-4 border-background flex items-center justify-center gap-4">
+      <LCARSButton
+        variant="nav1"
+        size="nav"
+        shape="pill"
+        panelNumber="01-001"
+        onClick={() => handleAction('settings')}
+      >
+        <Settings className="w-5 h-5" />
+        SETTINGS
+      </LCARSButton>
 
-        <Button
-          variant="outline"
-          size="lg"
-          onClick={() => handleAction('restart')}
-          className="h-16 px-8 bg-transparent border-2 border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary lcars-touch"
-        >
-          <RotateCcw className="w-6 h-6 mr-3" />
-          RESTART
-        </Button>
+      <LCARSButton
+        variant="nav2"
+        size="nav"
+        shape="pill"
+        panelNumber="02-002"
+        onClick={() => handleAction('restart')}
+      >
+        <RotateCcw className="w-5 h-5" />
+        RESTART
+      </LCARSButton>
 
-        <Button
-          variant="outline"
-          size="lg"
-          onClick={() => handleAction('refresh')}
-          className="h-16 px-8 bg-transparent border-2 border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary lcars-touch"
-        >
-          <RefreshCw className="w-6 h-6 mr-3" />
-          REFRESH
-        </Button>
+      <LCARSButton
+        variant="nav3"
+        size="nav"
+        shape="pill"
+        panelNumber="03-003"
+        onClick={() => handleAction('refresh')}
+      >
+        <RefreshCw className="w-5 h-5" />
+        REFRESH
+      </LCARSButton>
 
-        <Button
-          variant="outline"
-          size="lg"
-          onClick={() => handleAction('help')}
-          className="h-16 px-8 bg-transparent border-2 border-secondary-foreground text-secondary-foreground hover:bg-secondary-foreground hover:text-secondary lcars-touch"
-        >
-          <HelpCircle className="w-6 h-6 mr-3" />
-          HELP
-        </Button>
-      </div>
+      <LCARSButton
+        variant="nav4"
+        size="nav"
+        shape="pill"
+        panelNumber="04-004"
+        onClick={() => handleAction('help')}
+      >
+        <HelpCircle className="w-5 h-5" />
+        HELP
+      </LCARSButton>
     </div>
   );
 };

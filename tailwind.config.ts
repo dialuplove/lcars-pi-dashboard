@@ -76,6 +76,7 @@ export default {
 				'elevated': 'var(--shadow-elevated)'
 			},
 			fontFamily: {
+				antonio: ['Antonio', 'Arial Narrow', 'Avenir Next Condensed', 'sans-serif'],
 				orbitron: ['Orbitron', 'sans-serif'],
 				mono: ['JetBrains Mono', 'Monaco', 'Consolas', 'monospace'],
 			},
