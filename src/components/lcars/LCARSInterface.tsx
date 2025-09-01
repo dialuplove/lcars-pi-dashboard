@@ -99,22 +99,22 @@ export const LCARSInterface = ({ systemStatus }: LCARSInterfaceProps) => {
         </div>
 
         {/* Right Side Control Panels */}
-        <div className="flex flex-col w-80 space-y-4 p-4">
+        <div className="flex flex-col w-96 space-y-6 p-6">
           {/* Status Indicator */}
-          <div className="text-right mb-4">
-            <div className="text-2xl text-primary lcars-text">
+          <div className="text-right mb-8">
+            <div className="text-xl text-primary lcars-text">
               OPTICAL DATA NETWORK AVAILABLE
             </div>
           </div>
 
           {/* Control Buttons */}
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             <LCARSButton
               variant="nav1"
               size="nav"
               shape="pill"
               onClick={() => handleButtonClick('HOME ASSISTANT')}
-              className="h-24 text-2xl rounded-[20px]"
+              className="h-20 text-xl rounded-[20px]"
             >
               01
             </LCARSButton>
@@ -124,7 +124,7 @@ export const LCARSInterface = ({ systemStatus }: LCARSInterfaceProps) => {
               size="nav"
               shape="pill"
               onClick={() => handleButtonClick('PHOTO FRAME')}
-              className="h-24 text-2xl rounded-[20px]"
+              className="h-20 text-xl rounded-[20px]"
             >
               02
             </LCARSButton>
@@ -134,7 +134,7 @@ export const LCARSInterface = ({ systemStatus }: LCARSInterfaceProps) => {
               size="nav" 
               shape="pill"
               onClick={() => handleButtonClick('LIVE CAMERA')}
-              className="h-24 text-2xl rounded-[20px]"
+              className="h-20 text-xl rounded-[20px]"
             >
               03
             </LCARSButton>
@@ -144,14 +144,14 @@ export const LCARSInterface = ({ systemStatus }: LCARSInterfaceProps) => {
               size="nav"
               shape="pill"
               onClick={() => handleButtonClick('SYSTEM CONTROLS')}
-              className="h-24 text-2xl rounded-[20px]"
+              className="h-20 text-xl rounded-[20px]"
             >
               04
             </LCARSButton>
           </div>
 
           {/* Additional Control Panels */}
-          <div className="space-y-2 mt-8">
+          <div className="space-y-3 mt-12">
             <div className="lcars-panel-5 h-12 rounded-r-[30px] flex items-center justify-center">
               <span className="text-background lcars-text text-sm">MAIN COMPUTER</span>
             </div>
