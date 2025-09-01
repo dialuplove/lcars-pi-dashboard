@@ -25,7 +25,7 @@ export const NavigationButtons = ({ onNavigate, activeSection, className }: Navi
   };
 
   return (
-    <nav className={cn("grid grid-cols-2 gap-6 w-96 p-6", className)}>
+    <nav className={cn("grid grid-cols-4 gap-4 p-6", className)}>
       {navigationItems.map((item, index) => (
         <button
           key={item.id}

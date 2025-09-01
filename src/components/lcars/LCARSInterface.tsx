@@ -73,6 +73,7 @@ export const LCARSInterface = ({ systemStatus, config }: LCARSInterfaceProps) =>
             size="xl"
             shape="rounded-left"
             panelNumber="02-262000"
+            interactive
           />
         </div>
         <div className="right-frame-top">
@@ -129,13 +130,13 @@ export const LCARSInterface = ({ systemStatus, config }: LCARSInterfaceProps) =>
             <span className="hop">screen</span> top
           </button>
           <div className="space-y-2">
-            <LCARSPanel variant={3} shape="rounded-left" panelNumber="03-111968" />
-            <LCARSPanel variant={4} shape="rounded-left" panelNumber="04-041969" />
-            <LCARSPanel variant={5} shape="rounded-left" panelNumber="05-1701D" />
-            <LCARSPanel variant={6} shape="rounded-left" panelNumber="06-071984" />
+            <LCARSPanel variant={3} shape="rounded-left" panelNumber="03-111968" interactive />
+            <LCARSPanel variant={4} shape="rounded-left" panelNumber="04-041969" interactive />
+            <LCARSPanel variant={5} shape="rounded-left" panelNumber="05-1701D" interactive />
+            <LCARSPanel variant={6} shape="rounded-left" panelNumber="06-071984" interactive />
           </div>
           <div>
-            <LCARSPanel variant={7} shape="rounded-left" panelNumber="07-081940" />
+            <LCARSPanel variant={7} shape="rounded-left" panelNumber="07-081940" interactive />
           </div>
         </div>
         <div className="right-frame">
