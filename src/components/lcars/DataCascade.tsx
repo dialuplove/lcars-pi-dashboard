@@ -46,11 +46,15 @@ export const DataCascade = ({ columns = 8, className = '', animated = true }: Da
 
   return (
     <div className={`flex justify-end overflow-hidden ${className}`}>
-      <div className="flex gap-4 font-mono text-sm">
+      <div className="flex gap-6 font-mono text-sm opacity-80">
         {data.map((column, colIndex) => (
           <div
             key={colIndex}
-            className="h-6 text-right leading-6 data-cascade-row-1"
+            className="h-6 text-right leading-6 data-cascade-row-1 animate-pulse"
+            style={{
+              animationDelay: `${colIndex * 0.2}s`,
+              animationDuration: '2s'
+            }}
           >
             {column[0]}
           </div>
