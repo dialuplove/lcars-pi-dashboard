@@ -15,18 +15,23 @@ export const DataCascade = ({ columns = 8, className = '', animated = true }: Da
       const newData: string[][] = [];
       
       for (let col = 0; col < columns; col++) {
-        // Generate single data point per column for simplified single line
+        // Generate 4 data points per column for 4 rows
         const dataTypes = [
-          () => Math.floor(Math.random() * 999999).toString(),
           () => Math.floor(Math.random() * 99).toString().padStart(2, '0'),
+          () => Math.floor(Math.random() * 999).toString(),
           () => Math.floor(Math.random() * 9999).toString(),
-          () => `${Math.floor(Math.random() * 999)}.${Math.floor(Math.random() * 999)}`,
+          () => Math.floor(Math.random() * 99999).toString(),
           () => Math.floor(Math.random() * 999999999).toString(),
-          () => `${Math.floor(Math.random() * 99)}-${Math.floor(Math.random() * 999999)}`,
+          () => `${Math.floor(Math.random() * 999)}.${Math.floor(Math.random() * 999)}`,
         ];
         
-        const randomType = dataTypes[Math.floor(Math.random() * dataTypes.length)];
-        newData.push([randomType()]);
+        // Generate 4 rows of data per column
+        const columnData: string[] = [];
+        for (let row = 0; row < 4; row++) {
+          const randomType = dataTypes[Math.floor(Math.random() * dataTypes.length)];
+          columnData.push(randomType());
+        }
+        newData.push(columnData);
       }
       
       setData(newData);
@@ -50,13 +55,23 @@ export const DataCascade = ({ columns = 8, className = '', animated = true }: Da
         {data.map((column, colIndex) => (
           <div
             key={colIndex}
-            className="h-6 text-right leading-6 data-cascade-row-1 animate-pulse"
+            className="data-column space-y-1"
             style={{
-              animationDelay: `${colIndex * 0.2}s`,
-              animationDuration: '2s'
+              animationDelay: `${colIndex * 0.1}s`
             }}
           >
-            {column[0]}
+            {column.map((value, rowIndex) => (
+              <div
+                key={`${colIndex}-${rowIndex}`}
+                className={`h-4 text-right leading-4 dc-row-${rowIndex + 1} animate-pulse`}
+                style={{
+                  animationDelay: `${(colIndex * 0.1) + (rowIndex * 0.05)}s`,
+                  animationDuration: '2s'
+                }}
+              >
+                {value}
+              </div>
+            ))}
           </div>
         ))}
       </div>
